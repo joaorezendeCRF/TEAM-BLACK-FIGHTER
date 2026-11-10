@@ -1,0 +1,82 @@
+/* Espaçamento mantém o formulário independente das listas de agendamentos e resultados. */
+.fights-module .fight-form { padding:24px; margin-bottom:24px; }
+/* Campos ficam em duas colunas no computador e em uma no celular. */
+.fight-fields { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:18px; margin:20px 0; }
+/* Controles e textos longos não ultrapassam a largura do formulário. */
+.fight-fields label { min-width:0; }
+/* Ações quebram linha para manter os alvos de toque separados. */
+.fight-actions { display:flex; flex-wrap:wrap; gap:10px; }
+/* Separa cada lista sem alterar as cores próprias do tema atual. */
+.fight-section { margin-top:24px; }
+/* O local pode ocupar mais de uma linha em vez de esconder informações. */
+.fight-location { white-space:normal; min-width:160px; overflow-wrap:anywhere; }
+/* O nome conserva o comportamento de célula para alinhar todas as informações na mesma linha. */
+.fights-module td.student-name { display:table-cell; margin-bottom:0; }
+/* Vitória tem identificação textual e verde, com cores contrastantes nos dois temas. */
+.fight-result.won { color:var(--positive); background:var(--positive-bg); }
+/* Derrota tem identificação textual e vermelha, sem depender somente da cor. */
+.fight-result.lost { color:var(--negative); background:var(--negative-bg); }
+/* O resultado concluído fica legível e destacado na tabela e no diálogo. */
+.fight-result { display:inline-block; border-radius:6px; padding:8px 12px; font-weight:600; margin:12px 0; }
+/* As duas ações respeitam a mesma associação de cores dos resultados. */
+.fight-actions .result-win { color:var(--positive); background:var(--positive-bg); border-color:var(--positive); }
+.fight-actions .result-loss { color:var(--negative); background:var(--negative-bg); border-color:var(--negative); }
+/* Lutas futuras mantêm o resultado indisponível até sua data. */
+.fight-actions button:disabled { opacity:.5; cursor:not-allowed; transform:none; }
+/* Confirmações são legíveis para visão e leitores de tela, sem abrir alertas do navegador. */
+.fight-notice { color:var(--positive); line-height:1.6; margin:12px 0; }
+/* O formulário pode ser preenchido em uma tela estreita sem rolagem lateral. */
+@media(max-width:650px) { .fight-fields { grid-template-columns:1fr; } .fights-module .fight-form { padding:18px; } }
+
+/* Amarelo identifica cancelamento, com texto escuro legível nos dois temas. */
+.fights-module .result-cancel, .fights-module .fight-result.cancelled { background:#facc15; color:#422006; border-color:#eab308; }
+/* O motivo mantém quebras de linha sem expandir a tabela além da área disponível. */
+.fight-reason { white-space:pre-wrap; min-width:220px; overflow-wrap:anywhere; }
+/* A busca e a escolha do atleta são campos distintos, ambos com rótulo visível. */
+.fight-fields label + label { display:block; margin-top:12px; }
+/* Texto de justificativa usa as mesmas cores do diálogo nos temas preto e branco. */
+.cancel-reason-field { display:grid; gap:10px; margin:20px 0; }
+.cancel-reason-field textarea { width:100%; padding:12px; border:1px solid var(--input-border); border-radius:8px; background:var(--panel); color:var(--ink); font:inherit; resize:vertical; }
+/* Contorno mantém a justificativa acessível para quem navega pelo teclado. */
+.cancel-reason-field textarea:focus-visible { outline:3px solid #7c8ac5; outline-offset:3px; }
+
+/* Empates usam azul com texto branco tanto na ação quanto no resultado e na confirmação. */
+.fights-module .button.result-draw, .fights-module .fight-result.drawn { background:#2563eb; color:#fff; border-color:#2563eb; }
+
+/* Mostra as duas escolhas como áreas de toque sem trocar o comportamento nativo do rádio. */
+.gestao-modulos .fight-result-choices {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+  margin: 16px 0;
+  padding: 0;
+  border: 0;
+  min-width: 0;
+}
+.gestao-modulos .fight-result-choices legend { margin-bottom: 8px; font-weight: 650; }
+.gestao-modulos .payment-dialog .fight-result-choices label {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  min-height: 44px;
+  padding: 8px 10px;
+  margin: 0;
+  border: 1px solid var(--input-border);
+  border-radius: 8px;
+  cursor: pointer;
+}
+.gestao-modulos .fight-result-choices input {
+  flex: none;
+  width: 1rem;
+  height: 1rem;
+  margin: 0;
+  accent-color: var(--ink);
+}
+.gestao-modulos .fight-result-choices label:has(input:checked) {
+  border-color: var(--ink);
+  background: var(--subtle);
+}
+/* Em telas estreitas, cada opção fica em uma linha completa. */
+@media screen and (max-width: 440px) {
+  .gestao-modulos .fight-result-choices { grid-template-columns: 1fr; }
+}

@@ -1,26 +1,49 @@
+/* Carrega as utilidades Tailwind utilizadas nas classes dos componentes. */
 @import "tailwindcss";
 
+/* Define as variáveis de cor originais para o tema padrão do documento. */
 :root {
+  /* Cor de fundo padrão, mantida para preservar o comportamento existente. */
   --background: #ffffff;
+  /* Cor de texto padrão em grafite para o tema claro. */
   --foreground: #171717;
+/* Finaliza as variáveis globais do tema padrão. */
 }
 
+/* Expõe as variáveis de cores e fontes como tokens utilizáveis pelo Tailwind. */
 @theme inline {
+  /* Liga a utilidade de fundo à variável CSS do tema atual. */
   --color-background: var(--background);
+  /* Liga a utilidade de texto à variável CSS do tema atual. */
   --color-foreground: var(--foreground);
+  /* Disponibiliza a fonte sem serifa carregada pelo layout. */
   --font-sans: var(--font-geist-sans);
+  /* Disponibiliza a fonte monoespaçada carregada pelo layout. */
   --font-mono: var(--font-geist-mono);
+/* Finaliza o mapeamento dos tokens do Tailwind. */
 }
 
+/* Mantém o tema escuro já existente quando essa é a preferência do dispositivo. */
 @media (prefers-color-scheme: dark) {
+  /* Sobrescreve somente as cores globais para o tema escuro. */
   :root {
+    /* Define fundo quase preto, consistente com a identidade visual da academia. */
     --background: #0a0a0a;
+    /* Define texto claro para contraste sobre o fundo escuro. */
     --foreground: #ededed;
+  /* Finaliza as variáveis do tema escuro. */
   }
+/* Finaliza a condição de preferência de tema do dispositivo. */
 }
 
+/* Aplica as cores e a família de fontes padrão ao corpo do documento. */
 body {
+  /* Utiliza a cor de fundo correspondente ao tema ativo. */
   background: var(--background);
+  /* Utiliza a cor de texto correspondente ao tema ativo. */
   color: var(--foreground);
+  /* Mantém as fontes de reserva originais quando não há uma fonte específica no componente. */
   font-family: Arial, Helvetica, sans-serif;
+/* Finaliza os estilos globais do corpo da página. */
 }
+

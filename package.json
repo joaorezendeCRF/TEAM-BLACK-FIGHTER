@@ -9,9 +9,17 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "@inquirer/prompts": "^8.7.4",
+    "@prisma/adapter-mariadb": "^7.10.1",
+    "@prisma/client": "^7.10.1",
+    "argon2": "^0.45.1",
+    "jose": "^6.2.13",
+    "mysql2": "^3.24.6",
     "next": "16.4.2",
+    "prisma": "^7.10.1",
     "react": "19.3.0",
-    "react-dom": "19.3.0"
+    "react-dom": "19.3.0",
+    "server-only": "^0.0.1"
   },
   "devDependencies": {
     "@tailwindcss/turbopack": "^4",
@@ -21,6 +29,7 @@
     "eslint": "^9",
     "eslint-config-next": "16.4.2",
     "tailwindcss": "^4",
+    "tsx": "^4.23.15",
     "typescript": "^5"
   }
 }

@@ -1,0 +1,35 @@
+{
+  "available": true,
+  "version": [
+    {
+      "versao": "8.0.45"
+    }
+  ],
+  "columns": [
+    {
+      "COLUMN_NAME": "id",
+      "COLUMN_TYPE": "int",
+      "IS_NULLABLE": "NO",
+      "COLUMN_KEY": "PRI"
+    },
+    {
+      "COLUMN_NAME": "ativo",
+      "COLUMN_TYPE": "tinyint(1)",
+      "IS_NULLABLE": "NO",
+      "COLUMN_KEY": ""
+    },
+    {
+      "COLUMN_NAME": "perfil",
+      "COLUMN_TYPE": "enum('admin_principal','administrador','professor')",
+      "IS_NULLABLE": "NO",
+      "COLUMN_KEY": ""
+    }
+  ],
+  "tables": [
+    {
+      "TABLE_NAME": "professores",
+      "ENGINE": "InnoDB",
+      "TABLE_COLLATION": "utf8mb4_0900_ai_ci"
+    }
+  ]
+}

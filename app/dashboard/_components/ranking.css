@@ -1,0 +1,89 @@
+/* Separa o ranking dos cartões de faixas sem criar uma nova tela de navegação. */
+.gestao-modulos .ranking-panel {
+  /* O afastamento mantém o texto explicativo da graduação antes da classificação esportiva. */
+  margin-top:32px;
+}
+/* Agrupa os três critérios e permite quebra de linha em telas pequenas. */
+.gestao-modulos .ranking-controls {
+  /* Os botões ficam lado a lado enquanto existir espaço disponível. */
+  display:flex;
+  /* Permite organizar os critérios em mais de uma linha no celular. */
+  flex-wrap:wrap;
+  /* O espaço entre controles evita cliques acidentais no critério vizinho. */
+  gap:8px;
+  /* Alinha os controles ao título e às colunas da tabela existente. */
+  padding:0 23px;
+}
+/* Mantém cada critério coerente com os botões neutros da academia. */
+.gestao-modulos .ranking-controls button {
+  /* A altura mínima oferece uma área confortável para toque e teclado. */
+  min-height:40px;
+  /* O espaçamento interno permite ler o rótulo sem colar na borda. */
+  padding:9px 13px;
+  /* A borda diferencia o controle do fundo nos dois temas. */
+  border:1px solid var(--input-border);
+  /* O arredondamento acompanha o padrão dos demais controles do módulo. */
+  border-radius:7px;
+  /* O fundo respeita o tema escolhido para a demonstração. */
+  background:var(--panel);
+  /* O texto neutro indica um critério disponível, ainda não selecionado. */
+  color:var(--muted);
+  /* O tamanho mantém os três rótulos legíveis sem dominar o título. */
+  font-size:12px;
+  /* A espessura destaca a função clicável do critério. */
+  font-weight:600;
+}
+/* O critério selecionado se destaca com o contraste de ação já usado no módulo. */
+.gestao-modulos .ranking-controls button[aria-pressed="true"] {
+  /* Usa a mesma cor de fundo do botão de ação principal no tema atual. */
+  background:var(--action-bg);
+  /* A borda acompanha o fundo para manter um bloco visual contínuo. */
+  border-color:var(--action-bg);
+  /* O texto mantém contraste claro ou escuro de acordo com o tema. */
+  color:var(--action-ink);
+}
+/* A explicação permanece próxima dos controles e dos totais para contextualizar a classificação. */
+.gestao-modulos .ranking-explanation {
+  /* O alinhamento acompanha o título e as células da primeira coluna. */
+  padding:15px 23px;
+  /* O texto secundário não concorre com os nomes e resultados. */
+  color:var(--muted);
+  /* O tamanho iguala as demais explicações da demonstração. */
+  font-size:12px;
+  /* O espaçamento entre linhas permite ler a fórmula também no celular. */
+  line-height:1.7;
+}
+/* A posição tem dimensão uniforme para alinhar as oito linhas da tabela. */
+.gestao-modulos .ranking-position {
+  /* O indicador acompanha o conteúdo da célula sem ocupar a largura inteira. */
+  display:inline-flex;
+  /* Mantém números de uma ou mais casas alinhados ao centro. */
+  justify-content:center;
+  /* O alinhamento vertical acompanha os selos de faixa e situação. */
+  align-items:center;
+  /* A largura mínima evita mudança de tamanho entre posições. */
+  min-width:34px;
+  /* A altura preserva um indicador compacto dentro da linha. */
+  min-height:30px;
+  /* O formato arredondado acompanha o padrão dos selos do sistema. */
+  border-radius:999px;
+  /* A cor secundária mantém posições comuns legíveis nos dois temas. */
+  color:var(--muted);
+  /* Os números usam destaque sem transformar a classificação em pontuação oficial. */
+  font-weight:600;
+}
+/* As três primeiras posições recebem destaque neutro, preservando a identidade preto, branco e grafite. */
+.gestao-modulos .ranking-position.leading {
+  /* O fundo sutil destaca os líderes sem competir com as cores das faixas. */
+  background:var(--subtle);
+  /* A borda define o indicador em fundos claros ou escuros. */
+  border:1px solid var(--line);
+  /* O texto usa a cor principal para realçar a posição. */
+  color:var(--ink);
+}
+
+/* Em telas largas, acomoda as duas colunas extras com cabeçalhos que podem quebrar linha. */
+@media screen and (min-width: 1024px) {
+  .gestao-modulos .ranking-panel :is(th, td) { padding-inline: clamp(8px, 1vw, 16px); }
+  .gestao-modulos .ranking-panel th { white-space: normal; }
+}

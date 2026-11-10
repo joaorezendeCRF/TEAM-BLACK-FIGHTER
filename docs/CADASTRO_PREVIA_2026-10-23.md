@@ -1,0 +1,11 @@
+# Prévia do cadastro de alunos — 23/10/2026
+
+Implementada em Alunos > Novo aluno no sistema principal. Inclui identidade e contato, inscrição e matrícula distintas, professor fictício, planos atuais, catálogo atual de faixas, ativo/inativo, experiência, emergência, responsável condicional e perguntas de segurança com detalhes quando Sim. E-mail é opcional. A idade do responsável é calculada na data da matrícula, não hoje.
+
+Esta etapa é exclusivamente uma prévia de interface em memória. Regras verificam obrigatoriedade, calendário e respostas condicionais. Não validam autenticidade ou dígitos verificadores de CPF, nem confirmam contatos. Professor permanece texto fictício, ainda sem vínculo definitivo às contas. O teste usa tokens IDENTIFICAÇÃO/CONTATO FICTÍCIO, sem números pessoais.
+
+A revisão apresenta somente um resumo e nunca anuncia salvamento. Nenhum aluno, cobrança, documento ou dado real foi criado/importado. A lista e os totais existentes permanecem intactos. Não há envio de arquivos: Simular documento assinado apenas altera um marcador na memória. Dados não vão para localStorage ou servidor. Saída da tela ou recarga descarta o preenchimento.
+
+Próximas etapas: validar organização da tela; confirmar quais professores podem consultar/editar quais alunos; projetar vínculo de professor, estrutura de alunos/matrículas, regras definitivas de identificação e duplicidade, responsável e dados de saúde restritos; definir armazenamento privado/versionado, cópias independentes e restauração. Apresentar estrutura e permissões para validação explícita antes de migrar o banco existente. Não liberar dados reais nesta prévia.
+
+Validação: 74 testes passaram, compilação/TypeScript concluídos e 32 verificações HTTP com contas e banco fictícios passaram. Navegador: campos, preenchimento fictício, revisão sem e-mail, simulação de anexo, responsável adicional e preservação da listagem. Fontes TS/TSX comentados em português. Cópia anterior e evidência em cadastro-alunos na pasta de artefatos local da conversa.

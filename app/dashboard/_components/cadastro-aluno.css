@@ -1,0 +1,44 @@
+/* Formulário independente da listagem, usando os tokens já existentes nos dois temas. */
+.enrollment-module { margin:24px 0; }
+.enrollment-panel { padding:24px; }
+.enrollment-warning { padding:16px; border-left:3px solid var(--red); background:var(--soft-red); color:var(--ink); line-height:1.6; margin-bottom:24px!important; }
+/* Grupos seguem a ordem da ficha e permitem navegação por legendas acessíveis. */
+.enrollment-module fieldset { border:1px solid var(--line); border-radius:10px; padding:20px; margin:0 0 24px; min-width:0; }
+.enrollment-module legend { padding:0 8px; font-weight:600; }
+.enrollment-fields { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:18px; margin-top:12px; }
+.enrollment-module label { display:grid; gap:8px; color:var(--ink); min-width:0; font-size:13px; }
+.enrollment-module input, .enrollment-module select, .enrollment-module textarea { width:100%; background:var(--panel); color:var(--ink); border:1px solid var(--input-border); border-radius:7px; padding:11px; font:inherit; min-height:42px; }
+.enrollment-module textarea { min-height:90px; resize:vertical; }
+.enrollment-question { display:grid; gap:12px; align-content:start; }
+/* Checkbox mantém tamanho próprio e não se expande como campo de texto. */
+.enrollment-module .enrollment-check { display:flex; align-items:center; gap:12px; margin-top:16px; }
+.enrollment-module input[type="checkbox"] { width:18px; min-height:18px; }
+.enrollment-review { margin-top:24px; padding:20px; border:1px solid var(--positive); background:var(--positive-bg); border-radius:10px; line-height:1.8; }
+.enrollment-review p { margin:12px 0!important; }
+.enrollment-module textarea:focus-visible { outline:3px solid #7c8ac5; outline-offset:3px; }
+@media(max-width:700px) { .enrollment-fields { grid-template-columns:1fr; } .enrollment-panel, .enrollment-module fieldset { padding:16px; } }
+
+/* Seleção identifica o aluno sem depender apenas de cor e preserva teclado e foco. */
+.gestao-modulos .student-select { background:transparent; color:var(--ink); font:inherit; font-weight:650; text-align:left; text-decoration:underline; text-underline-offset:4px; border:0; cursor:pointer; }
+/* O painel de anexos é independente do formulário de matrícula. */
+.student-documents { margin-top:24px; }
+.document-upload { padding:24px; border-top:1px solid var(--line); }
+.document-upload fieldset { display:grid; gap:16px; margin-top:16px; border:0; }
+.document-upload label { display:grid; gap:8px; font-size:13px; }
+.document-upload input, .document-upload select { padding:11px; border:1px solid var(--input-border); background:var(--panel); color:var(--ink); border-radius:7px; max-width:100%; }
+.document-upload .enrollment-check { display:flex; align-items:center; gap:10px; }
+.document-upload button { justify-self:start; }
+.student-documents .form-success, .student-documents .form-error { margin:0 24px 24px; }
+
+/* A marca de teste ocupa sua própria linha, sem se juntar ao nome do aluno. */
+.gestao-modulos .student-select + .section-footnote { display:block; margin-top:6px; }
+/* A ficha selecionada recebe espaçamento ao ser trazida para a área visível. */
+.student-documents { scroll-margin-top:24px; }
+
+/* Valor acompanha a seleção e usa os mesmos contrastes dos dois temas. */
+.selected-plan { margin:0!important; padding:14px; border:1px solid var(--line); border-radius:8px; align-self:end; }
+.selected-plan strong { color:var(--positive); font-size:18px; }
+.selected-plan small { display:block; margin-top:7px; line-height:1.6; color:var(--muted); }
+/* O painel ganha posição de leitura e foco visível para navegação por teclado. */
+.student-edit { scroll-margin-top:24px; margin-top:24px; }
+.student-edit:focus-visible { outline:2px solid var(--input-border); outline-offset:4px; }

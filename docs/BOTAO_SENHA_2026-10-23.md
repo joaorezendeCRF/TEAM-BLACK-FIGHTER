@@ -1,0 +1,3 @@
+# Botão de redefinir senha — 23/10/2026
+Visual compacto com cadeado, borda, hover, foco e indicador de abertura. TSX comentado em português. Ação, campos, validações e permissões preservados. Nenhuma senha foi alterada. Compilação e 32 verificações HTTP passaram; abertura do formulário conferida no navegador com contas fictícias. Fontes anteriores e captura na pasta botao-senha em C:\Users\jgmr2\.codex\visualizations\2026\10\22\01a164f2-1165-7d32-b49f-b5333e7342be.
+Cadastro de alunos: campos já levantados; ainda implementar formulário, persistência, acesso por professor, tratamento restrito de saúde e menores e armazenamento privado/versionado de anexos com restauração testada. Apresentar prévia da estrutura antes de migrar banco existente.

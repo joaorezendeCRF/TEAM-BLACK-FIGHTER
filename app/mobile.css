@@ -1,0 +1,125 @@
+/* A navegação do telefone usa uma barra compacta e mantém o painel acessível sem ocupar a tela toda. */
+.mobile-dashboard-bar {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: .75rem;
+  padding: max(.65rem, env(safe-area-inset-top)) max(1rem, env(safe-area-inset-right)) .65rem max(1rem, env(safe-area-inset-left));
+  color: white;
+  background: #09090b;
+  border-bottom: 1px solid #ffffff26;
+}
+.mobile-dashboard-brand { font-size: .77rem; font-weight: 750; letter-spacing: .13em; }
+.mobile-dashboard-menu summary {
+  display: grid;
+  place-items: center;
+  min-height: 44px;
+  padding-inline: 1rem;
+  cursor: pointer;
+  border: 1px solid #ffffff40;
+  border-radius: .7rem;
+  font-size: .875rem;
+  font-weight: 650;
+}
+.mobile-dashboard-menu summary::-webkit-details-marker { display: none; }
+.mobile-dashboard-menu[open] summary { background: #ffffff1f; }
+.mobile-dashboard-links {
+  position: absolute;
+  inset-inline: 0;
+  top: 100%;
+  max-height: calc(100dvh - 76px);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding: 1rem;
+  background: #09090b;
+  border-bottom: 1px solid #ffffff26;
+  box-shadow: 0 .75rem 2rem #0006;
+}
+.mobile-dashboard-links nav { display: grid; }
+.mobile-dashboard-links button { margin-top: .75rem; }
+/* A impressão e a barra lateral usam seus próprios layouts, mesmo em uma janela estreita. */
+@media print, (min-width: 1024px) {
+  .mobile-dashboard-bar { display: none; }
+}
+
+@media screen and (max-width: 1023px) {
+  /* Os cartões preservam células, cabeçalhos acessíveis e ações sem exigir rolagem lateral. */
+  .dashboard-content table[data-mobile-cards] {
+    display: block;
+    width: 100%;
+    min-width: 0;
+  }
+  .dashboard-content [data-mobile-cards] thead {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+  .dashboard-content [data-mobile-cards] :is(tbody, tfoot) { display: block; }
+  .dashboard-content [data-mobile-cards] :is(tbody, tfoot) tr {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-items: start;
+    padding: .55rem .45rem;
+    border-bottom: 1px solid var(--line, #8884);
+  }
+  .dashboard-content [data-mobile-cards] tbody tr:last-child { border-bottom: 0; }
+  .dashboard-content [data-mobile-cards] tfoot th { grid-column: 1 / -1; }
+  .dashboard-content [data-mobile-cards] td[data-label] {
+    display: block;
+    min-width: 0;
+    padding: .5rem .6rem;
+    border-bottom: 0;
+    text-align: start;
+    white-space: normal;
+    overflow-wrap: anywhere;
+  }
+  .dashboard-content [data-mobile-cards] td[data-label]::before {
+    content: attr(data-label);
+    display: block;
+    margin-bottom: .3rem;
+    color: var(--muted, currentColor);
+    font-size: .7rem;
+    line-height: 1.25;
+    font-weight: 650;
+  }
+  /* Ações de confirmação e formulários de conta precisam de toda a largura do cartão. */
+  .dashboard-content [data-mobile-cards] td:is([data-label="Ação"], [data-label="Ações"], [data-label="Resultado"], [data-label="Motivo"], [data-label="Referência"], [data-label="Ocorrência"], :has(details[open])) {
+    grid-column: 1 / -1;
+  }
+  .dashboard-content [data-mobile-cards] td details { min-width: 0; max-width: 100%; }
+  .dashboard-content [data-mobile-cards] :is(button, summary, a) { max-width: 100%; white-space: normal; }
+  .dashboard-content [data-mobile-cards] button { min-height: 44px; }
+  .dashboard-content :is(select, textarea, input:not([type="checkbox"]):not([type="radio"])) {
+    min-width: 0;
+    max-width: 100%;
+    font-size: 16px;
+  }
+  .dashboard-content .fight-reason { min-width: 0; }
+  .dashboard-content .payment-dialog { max-height: calc(100dvh - 1.5rem); }
+  .dashboard-content .cancel-reason-field select { min-height: 44px; }
+  /* Posição de rolagem deixa o título da ficha visível abaixo da barra fixa. */
+  .dashboard-content :is(.student-edit, .student-documents) { scroll-margin-top: 82px; }
+}
+
+@media screen and (max-width: 639px) {
+  /* Login mantém os campos acessíveis com barras móveis e teclado aberto. */
+  .login-screen { padding-block: max(1rem, env(safe-area-inset-top)) max(1rem, env(safe-area-inset-bottom)); }
+  .login-card { padding: 1.25rem; border-radius: 1.25rem; }
+  .login-card header img { width: 6.5rem; height: 6.5rem; }
+  .login-card form { margin-top: 1.25rem; }
+  .login-card footer { margin-top: 1.25rem; padding-top: .9rem; }
+  .login-card input { min-height: 48px; font-size: 16px; }
+  .login-card input + button { min-height: 44px; padding-inline: .3rem; }
+  .dashboard-content .gestao-modulos .payment-dialog { padding: 1rem; }
+  .dashboard-content .dialog-actions { flex-wrap: wrap; }
+  .dashboard-content .dialog-actions button { flex: 1 1 auto; min-height: 44px; white-space: normal; }
+  .dashboard-content .ranking-controls button { min-height: 44px; }
+  .dashboard-content .gestao-modulos .main-content { padding-inline: .25rem; }
+}

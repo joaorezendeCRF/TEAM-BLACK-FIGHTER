@@ -1,0 +1,35 @@
+// Configura a geração do cliente Prisma já utilizado pelos recursos existentes.
+generator client {
+  // Seleciona o gerador de cliente TypeScript do Prisma.
+  provider = "prisma-client"
+  // Mantém a saída dos arquivos gerados separada dos fontes escritos manualmente.
+  output   = "../app/generated/prisma"
+// Finaliza a configuração do gerador, sem executá-lo.
+}
+
+// Define o provedor do banco existente; a conexão é configurada externamente.
+datasource db {
+  // Preserva o uso do MySQL e não cria outro banco.
+  provider = "mysql"
+// Finaliza a declaração da origem de dados.
+}
+
+// Documenta o modelo Prisma existente, sem alterar tabelas nem executar migrações.
+model professores {
+  // Identificador primário numérico gerado automaticamente pelo banco.
+  id         Int      @id @default(autoincrement())
+  // Nome de apresentação com capacidade de até 150 caracteres.
+  nome       String   @db.VarChar(150)
+  // Identificador de login único, com capacidade de até 50 caracteres.
+  usuario    String   @unique(map: "usuario") @db.VarChar(50)
+  // E-mail opcional e único quando preenchido, com até 150 caracteres.
+  email      String?  @unique(map: "email") @db.VarChar(150)
+  // Armazena exclusivamente o hash da senha em até 255 caracteres.
+  senha_hash String   @db.VarChar(255)
+  // Mantém a conta ativa por padrão quando um registro novo é inserido.
+  ativo      Boolean  @default(true)
+  // Registra a criação com a data do banco e precisão de segundos.
+  criado_em  DateTime @default(now()) @db.DateTime(0)
+// Finaliza o modelo existente; o cadastro novo utiliza MySQL2 diretamente.
+}
+
